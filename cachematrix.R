@@ -1,6 +1,6 @@
 ## This pair of functions saves computation time by setting a matrix object
 ## with the capability to cache its inverse.
-## The first function creates the matrix object (a list of functions).
+## E.g. get the inverse matrix of x by typing cachesolve(makeCacheMatrix(x))
 
 
 ## This functions outputs a list of functions operating on an input matrix
@@ -29,7 +29,7 @@ cacheSolve <- function(x, ...) {
   s <- x$getsolve() # check if inverse is already calculated
   
   if(!is.null(s)) { # if inverse is already calculated, return s
-    message("getting cahced data")
+    message("getting cached data")
     return(s)
   }
   
@@ -38,5 +38,5 @@ cacheSolve <- function(x, ...) {
   s <- solve(data, ...)
   x$setsolve(s)
   s
-  
+
 }
