@@ -18,13 +18,13 @@ makeCacheMatrix <- function(x = matrix()) {
   getsolve <- function() s                 # fxn returns inverse matrix
 
   list (set = set, get = get, setsolve = setsolve, getsolve = getsolve)
+  
 }
 
-## The second function calls the inverse matrix from the matrix object, if already calculated
-##  OR the function will calculate and set the inverse matrix if it hasn't already been calculated.
+## This function calls the inverse matrix from the matrix object, if already calculated
+##  Otherwise, the function will calculate and set the inverse matrix.
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
   
   s <- x$getsolve() # check if inverse is already calculated
   
@@ -33,9 +33,10 @@ cacheSolve <- function(x, ...) {
     return(s)
   }
   
-  # if statement does not run:
+  # if statement does not run, get the matrix and calculate its inverse:
   data <- x$get()
   s <- solve(data, ...)
   x$setsolve(s)
   s
+  
 }
